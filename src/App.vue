@@ -1,20 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Vuex Counter</h1>
+    <Counter/>
+    <Todo/>
+    <TodoForm/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Counter from './components/Counter.vue'
+import Todo from './components/Todo.vue'
+import TodoForm from './components/TodoForm.vue'
+
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld
+    Counter,
+    Todo,
+    TodoForm
   }
 }
 </script>
+
 
 <style>
 #app {
