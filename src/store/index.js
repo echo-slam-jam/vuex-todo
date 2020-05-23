@@ -15,8 +15,6 @@ const vuexLocalStorage = new VuexPersist({
 export default new Vuex.Store({
   state: {
   	count: 0,
-  	name: "",
-  	date: "",
   	tasklist: [
           {
             id: 1,
@@ -49,15 +47,18 @@ export default new Vuex.Store({
   	decrement (state) {
   		state.count--;
   	},
-  	createTask (state){
-  		let name = state.name;
-  		let date = state.date;
+  	createTask (state, name, date){
+  		//let date = new Date(); = timestamp date today
   		let createId = state.tasklist.length + 1;
-		state.tasklist.push ({"id": createId, "name": name, "date": date});
-}
+		state.tasklist.push ({id: createId, name, date});
+	},
+	//createDate (state, date) {
+		//let lastId = state.tasklist.length - 1;
+		//state.tasklist[lastId].date = date;
+	//},
   },
   actions: {
-  	createTask: ({ commit }, name) => commit ('createTask', name),
+  	createTask: ({ commit }, name, date) => commit ('createTask', name, date),
   	increment: ({ commit }) => commit ('increment'),
   	decrement: ({ commit }) => commit ('decrement'),
   	incrementIfOdd: ({ commit, getters }) => getters.parity === 'odd' ? commit ('increment') : false,

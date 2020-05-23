@@ -1,19 +1,25 @@
 <template>
   <div>
-      <!--<button @click = "createTask" variant = "warning">add task</button> -->
-      <input id="taskName" @keyup.enter="createTask()" v-model= "name" type= "text" placeholder= "task name">
-
-
-      </div>
+     <input id="taskName"  v-model="name" type= "text" placeholder= "task name">
+     <input type = "text" id="taskDate"  v-model="date" placeholder = "task date">
+     <button @click="createTask(name, date)"> add task</button>
+  </div>
 </template>
 
 <script>
   import { mapState, mapActions } from 'vuex'
 export default {
   name: 'TodoForm',
+  //name in data as passable variable
+  data () {
+    return {
+      name: '',
+      date: ''
+    };
+  },
   computed: {
     ...mapState([
-      'tasklist', 'name', 'date', 
+      'tasklist' 
     ]),
   },
     methods: mapActions([
