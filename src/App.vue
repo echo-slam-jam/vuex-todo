@@ -8,6 +8,7 @@
 </template>
 
 <script>
+  console.log(localStorage); //displays storage in f12 console to enable localStorage(); commands in console
 import Counter from './components/Counter.vue'
 import Todo from './components/Todo.vue'
 import TodoForm from './components/TodoForm.vue'

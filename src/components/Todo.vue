@@ -9,8 +9,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="task in tasklist" :key="task.id">          <td>{{ task.name }}</td>
-                  <td>{{ task.date }}</td>
+        <tr v-for="task in tasklist" :key="task.id">
+
+          <td v-if = "$store.state.editing === task.id">
+            <input type="text" v-model = "name">
+          </td>
+          <td v-else>{{ task.name }}</td>
+
+          <td v-if = "$store.state.editing === task.id">
+            <input type="text" v-model = "date"></td>
+          <td v-else>{{ task.date }}</td>
+          <td v-if = "$store.state.editing === task.id">
+            <button @click = "editTask({name, date})">Save</button>
+            <button @click = "cancelEdit(task)">Cancel</button>
+          </td>
+          <td v-else>
+            <button @click = "deleteTask(task.id)">Delete</button>
+            <button @click = "editMode(task)">Edit</button>
+          </td>
         </tr>
       </tbody>
     </v-simple-table>
@@ -21,13 +37,18 @@
   import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Todo',
+  //data() {
+   // return {
+      //editing: '',
+   // }
+ // },
   computed: {
     ...mapState([
-      'tasklist'
+      'tasklist', 'editing', 'getId'
     ]),
   },
   methods: mapActions([
-    'createTask'
+    'createTask', 'deleteTask', 'editMode', 'cancelEdit', 'editTask'
   ])
 }
 </script>

@@ -2,7 +2,7 @@
   <div>
      <input id="taskName"  v-model="name" type= "text" placeholder= "task name">
      <input type = "text" id="taskDate"  v-model="date" placeholder = "task date">
-     <button @click="createTask(name, date)"> add task</button>
+     <button @click="createTask({name, date})"> add task</button>
   </div>
 </template>
 
