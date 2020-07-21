@@ -10,7 +10,7 @@
   import { mapState, mapActions } from 'vuex'
 export default {
   name: 'TodoForm',
-  //name in data as passable variable
+  //name & date in data passed from form to function in index.js
   data () {
     return {
       name: '',

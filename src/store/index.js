@@ -40,9 +40,6 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    updateTask (state, name) {
-            this.state.tasklist.name = name
-        },
     increment (state) {
       state.count++;
     },
@@ -51,16 +48,18 @@ export default new Vuex.Store({
     },
     createTask (state, {name, date}){
       //let date = new Date(); = timestamp date today
+      //name: name, date: date from passed params
+      //{object and properties}
       let createId = state.tasklist.length + 1;
     state.tasklist.push ({id: createId, name, date});
   },
   deleteTask (state, id) {
-    //problem din to kasi pagdating sa isa nlang ung natitira nagiging 0 yung id nya pero iba yung id property nya HAHA
-    state.tasklist.splice(id - 1, 1);
+    //findIndex(any variable name => condition for the variable to meet) 
+    const index = state.tasklist.find(task => task === id);
+    state.tasklist.splice(index, 1);
   },
   //object.assign = merge/copy elements of source to target object.assign(target, source) 
   editMode (state, task) {
-    this.cachedTask = Object.assign({}, task);
     state.editing = task.id;
   },
   cancelEdit (state, task) {
