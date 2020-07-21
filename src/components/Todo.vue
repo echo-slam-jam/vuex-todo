@@ -20,7 +20,7 @@
             <input type="text" v-model = "date"></td>
           <td v-else>{{ task.date }}</td>
           <td v-if = "$store.state.editing === task.id">
-            <button @click = "editTask({name, date})">Save</button>
+            <button @click = "editTask({ id: task.id, name, date})">Save</button>
             <button @click = "cancelEdit(task)">Cancel</button>
           </td>
           <td v-else>
