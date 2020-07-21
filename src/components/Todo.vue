@@ -24,7 +24,7 @@
             <button @click = "cancelEdit(task)">Cancel</button>
           </td>
           <td v-else>
-            <button @click = "deleteTask(task.id)">Delete</button>
+            <button @click = "deleteTask({id: task.id})">Delete</button>
             <button @click = "editMode(task)">Edit</button>
           </td>
         </tr>

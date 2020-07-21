@@ -53,9 +53,10 @@ export default new Vuex.Store({
       let createId = state.tasklist.length + 1;
     state.tasklist.push ({id: createId, name, date});
   },
-  deleteTask (state, id) {
+  deleteTask (state, {id}) {
     //findIndex(any variable name => condition for the variable to meet) 
-    const index = state.tasklist.find(task => task === id);
+    const index = state.tasklist.findIndex(task => task.id === id);
+    alert(index);
     state.tasklist.splice(index, 1);
   },
   //object.assign = merge/copy elements of source to target object.assign(target, source) 
@@ -81,7 +82,7 @@ export default new Vuex.Store({
   actions: {
     //name and date parameters passed as a single object because of single parameter restriction
     createTask: ({ commit }, {name, date}) => commit ('createTask', {name, date}),
-    deleteTask: ({ commit }, id) => commit ('deleteTask', id),
+    deleteTask: ({ commit }, {id}) => commit ('deleteTask', {id}),
     editMode: ({ commit }, task) => commit ('editMode', task),
     editTask: ({ commit }, {id, name, date}) => commit ('editTask', {id, name, date}),
     cancelEdit: ({ commit }, task) => commit ('cancelEdit', task),
